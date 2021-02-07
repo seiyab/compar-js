@@ -1,5 +1,5 @@
 import { byKey } from "./comparator";
-import { flow, emptyFirst, emptyLast } from "./combinator";
+import { flow } from "./combinator";
 
 describe("flow", () => {
   const input = [
@@ -9,6 +9,7 @@ describe("flow", () => {
     { id: 3, name: "Bob", age: 20 },
     { id: 4, name: "Clare", age: 30 },
   ];
+
   it("multiple", () => {
     const output = input
       .slice()
