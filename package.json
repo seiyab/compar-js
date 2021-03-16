@@ -1,11 +1,19 @@
 {
   "name": "@seiyab/compar",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Comparators and Comparator Combinators for JavaScript",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint ./src --ext .ts",
+    "format": "prettier -w \"src/**/*.ts\"",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format, && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
