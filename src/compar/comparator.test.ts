@@ -1,4 +1,5 @@
-import { by, byKey } from "./comparator";
+import { flow } from "./combinator";
+import { by, byKey, irregular } from "./comparator";
 
 describe("by", () => {
   it("string", () => {
@@ -62,5 +63,39 @@ describe("byKey", () => {
     const output = input.slice().sort(byKey("height", { empty: "first" }));
     byKey("z" as const);
     expect(output).toEqual([{}, { height: 10 }, { height: 30 }]);
+  });
+});
+
+describe("irregular", () => {
+  it("first", () => {
+    const input = [1, 2, 3, 4, 100, 5];
+    const output = input.slice().sort(
+      flow(
+        irregular((x) => x > 10, "first"),
+        by((x) => x)
+      )
+    );
+    expect(output).toEqual([100, 1, 2, 3, 4, 5]);
+  });
+
+  it("last", () => {
+    const input = [
+      { name: "coke", size: 300 },
+      { name: "tea", size: 200 },
+      { name: "unknown", size: 400 },
+      { name: "water", size: 500 },
+    ];
+    const output = input.slice().sort(
+      flow(
+        irregular((x) => x.name === "unknown", "last"),
+        byKey("size", { order: "desc" })
+      )
+    );
+    expect(output).toEqual([
+      { name: "water", size: 500 },
+      { name: "coke", size: 300 },
+      { name: "tea", size: 200 },
+      { name: "unknown", size: 400 },
+    ]);
   });
 });

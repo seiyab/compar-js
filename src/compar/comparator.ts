@@ -93,3 +93,14 @@ type Maybe<T> = T | null | undefined;
 const presents = <T>(value: Maybe<T>): value is T => {
   return value !== null && value !== undefined;
 };
+
+export const irregular = <T>(
+  predicate: (element: T) => boolean,
+  order: "first" | "last"
+) => (a: T, b: T): number => {
+  const [aIsIrregular, bIsIrregular] = [a, b]
+    .map(predicate)
+    .map((isIrr) => (isIrr ? 1 : -1));
+  if (order === "first") return bIsIrregular - aIsIrregular;
+  return aIsIrregular - bIsIrregular;
+};
