@@ -153,3 +153,29 @@ beverages.sort(compar.flow([
   ]
 */
 ```
+
+### compar.irregular
+Arrange irregular value.
+
+```typescript
+const beverages = [
+  { name: "coke", size: 300 },
+  { name: "tea", size: 200 },
+  { name: "unknown", size: 400 },
+  { name: "water", size: 500 },
+]
+input.sort(
+  flow(
+    irregular((x) => x.name === "unknown", "last"),
+    byKey("size", { order: "desc" })
+  )
+)
+/*
+  -> [
+    { name: "water", size: 500 },
+    { name: "coke", size: 300 },
+    { name: "tea", size: 200 },
+    { name: "unknown", size: 400 },
+  ]
+*/
+```
