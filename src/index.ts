@@ -1,4 +1,4 @@
-import { by, byKey } from "./compar/comparator";
+import { by, byKey, irregular } from "./compar/comparator";
 import { flow } from "./compar/combinator";
 
-export { by, byKey, flow };
+export { by, byKey, flow, irregular };
