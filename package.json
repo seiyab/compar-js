@@ -8,7 +8,7 @@
     "build": "tsc",
     "test": "jest",
     "lint": "eslint ./src --ext .ts",
-    "format": "prettier -w \"src/**/*.ts\"",
+    "format": "prettier -c \"src/**/*.ts\"",
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
