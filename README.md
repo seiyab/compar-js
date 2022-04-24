@@ -36,10 +36,10 @@ const beverages = [
   { name: 'coke', size: 500 }
 ]
 
-beverages.sort(compar.flow([
+beverages.sort(compar.flow(
   compar.byKey('size'),
   compar.byKey('name'),
-]))
+))
 /*
   -> [
     { name: 'coke', size: 300 },
@@ -140,10 +140,10 @@ const beverages = [
   { name: 'coke', size: 500 }
 ]
 
-beverages.sort(compar.flow([
+beverages.sort(compar.flow(
   compar.byKey('size'),
   compar.byKey('name'),
-]))
+))
 /*
   -> [
     { name: 'coke', size: 300 },
