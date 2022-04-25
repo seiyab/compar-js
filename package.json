@@ -1,6 +1,6 @@
 {
   "name": "@seiyab/compar",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "description": "Comparators and Comparator Combinators for JavaScript",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
